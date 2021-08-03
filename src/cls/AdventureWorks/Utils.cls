@@ -16,6 +16,9 @@ ClassMethod Setup(repoRoot As %String = "", verbose As %Boolean = 1) As %Status
 		set sc = ..RunDDL(repoRoot_"src"_separator_"sql"_separator_"install-dw.sql",,, verbose)
 		quit:$$$ISERR(sc)
 
+		// TODO: move into .sql file
+		do $system.SQL.Util.SetOption("IdentityInsert", 1)
+
 		set variables("data_dir") = repoRoot_"data"_separator
 		set sc = ..RunDDL(repoRoot_"src"_separator_"sql"_separator_"load-dw.sql", .variables,, verbose)
 		quit:$$$ISERR(sc)
