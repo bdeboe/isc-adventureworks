@@ -3,7 +3,7 @@
 
 -- not used
 /*
-CREATE TABLE AdventureWorks.DatabaseLog(
+CREATE TABLE ${schema}DatabaseLog(
     DatabaseLogID INTEGER IDENTITY (1, 1) NOT NULL,
     PostTime DATETIME NOT NULL, 
     DatabaseUser VARCHAR(100) NOT NULL, 
@@ -15,13 +15,13 @@ CREATE TABLE AdventureWorks.DatabaseLog(
 )
 ;
 
-CREATE TABLE AdventureWorks.AdventureWorksDWBuildVersion(
+CREATE TABLE ${schema}AdventureWorksDWBuildVersion(
 	DBVersion VARCHAR(50) NULL,
 	VersionDate DATETIME NULL
 )
 ;
 
-CREATE TABLE AdventureWorks.sysdiagrams(
+CREATE TABLE ${schema}sysdiagrams(
 	name VARCHAR(100) NOT NULL,
 	principal_id INTEGER NOT NULL,
 	diagram_id INTEGER IDENTITY(1,1) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE AdventureWorks.sysdiagrams(
 
 */
 
-CREATE TABLE AdventureWorks.DimAccount(
+CREATE TABLE ${schema}DimAccount(
 	AccountKey INTEGER IDENTITY(1,1) NOT NULL,
 	ParentAccountKey INTEGER NULL,
 	AccountCodeAlternateKey INTEGER NULL,
@@ -48,7 +48,7 @@ CREATE TABLE AdventureWorks.DimAccount(
 ;
 
 
-CREATE TABLE AdventureWorks.DimCurrency(
+CREATE TABLE ${schema}DimCurrency(
 	CurrencyKey INTEGER IDENTITY(1,1) NOT NULL,
 	CurrencyAlternateKey CHAR(3) NOT NULL,
 	CurrencyName VARCHAR(50) NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE AdventureWorks.DimCurrency(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimCustomer(
+CREATE TABLE ${schema}DimCustomer(
 	CustomerKey INTEGER IDENTITY(1,1) NOT NULL,
 	GeographyKey INTEGER NULL,
 	CustomerAlternateKey VARCHAR(15) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE AdventureWorks.DimCustomer(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimDate(
+CREATE TABLE ${schema}DimDate(
 	DateKey INTEGER NOT NULL,
 	FullDateAlternateKey DATE NOT NULL,
 	DayNumberOfWeek TINYINT NOT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE AdventureWorks.DimDate(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimDepartmentGroup(
+CREATE TABLE ${schema}DimDepartmentGroup(
 	DepartmentGroupKey INTEGER IDENTITY(1,1) NOT NULL,
 	ParentDepartmentGroupKey INTEGER NULL,
 	DepartmentGroupName VARCHAR(50) NULL,
@@ -125,7 +125,7 @@ CREATE TABLE AdventureWorks.DimDepartmentGroup(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimEmployee(
+CREATE TABLE ${schema}DimEmployee(
 	EmployeeKey INTEGER IDENTITY(1,1) NOT NULL,
 	ParentEmployeeKey INTEGER NULL,
 	EmployeeNationalIDAlternateKey VARCHAR(15) NULL,
@@ -161,7 +161,7 @@ CREATE TABLE AdventureWorks.DimEmployee(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimGeography(
+CREATE TABLE ${schema}DimGeography(
 	GeographyKey INTEGER IDENTITY(1,1) NOT NULL,
 	City VARCHAR(30) NULL,
 	StateProvinceCode VARCHAR(3) NULL,
@@ -177,7 +177,7 @@ CREATE TABLE AdventureWorks.DimGeography(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimOrganization(
+CREATE TABLE ${schema}DimOrganization(
 	OrganizationKey INTEGER IDENTITY(1,1) NOT NULL,
 	ParentOrganizationKey INTEGER NULL,
 	PercentageOfOwnership VARCHAR(16) NULL,
@@ -187,7 +187,7 @@ CREATE TABLE AdventureWorks.DimOrganization(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimProduct(
+CREATE TABLE ${schema}DimProduct(
 	ProductKey INTEGER IDENTITY(1,1) NOT NULL,
 	ProductAlternateKey VARCHAR(25) NULL,
 	ProductSubcategoryKey INTEGER NULL,
@@ -229,7 +229,7 @@ CREATE TABLE AdventureWorks.DimProduct(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimProductCategory(
+CREATE TABLE ${schema}DimProductCategory(
 	ProductCategoryKey INTEGER IDENTITY(1,1) NOT NULL,
 	ProductCategoryAlternateKey INTEGER NULL,
 	EnglishProductCategoryName VARCHAR(50) NOT NULL,
@@ -240,7 +240,7 @@ CREATE TABLE AdventureWorks.DimProductCategory(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimProductSubcategory(
+CREATE TABLE ${schema}DimProductSubcategory(
 	ProductSubcategoryKey INTEGER IDENTITY(1,1) NOT NULL,
 	ProductSubcategoryAlternateKey INTEGER NULL,
 	EnglishProductSubcategoryName VARCHAR(50) NOT NULL,
@@ -252,7 +252,7 @@ CREATE TABLE AdventureWorks.DimProductSubcategory(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimPromotion(
+CREATE TABLE ${schema}DimPromotion(
 	PromotionKey INTEGER IDENTITY(1,1) NOT NULL,
 	PromotionAlternateKey INTEGER NULL,
 	EnglishPromotionName VARCHAR(255) NULL,
@@ -274,7 +274,7 @@ CREATE TABLE AdventureWorks.DimPromotion(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimReseller(
+CREATE TABLE ${schema}DimReseller(
 	ResellerKey INTEGER IDENTITY(1,1) NOT NULL,
 	GeographyKey INTEGER NULL,
 	ResellerAlternateKey VARCHAR(15) NULL,
@@ -300,7 +300,7 @@ CREATE TABLE AdventureWorks.DimReseller(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimSalesReason(
+CREATE TABLE ${schema}DimSalesReason(
 	SalesReasonKey INTEGER IDENTITY(1,1) NOT NULL,
 	SalesReasonAlternateKey INTEGER NOT NULL,
 	SalesReasonName VARCHAR(50) NOT NULL,
@@ -309,7 +309,7 @@ CREATE TABLE AdventureWorks.DimSalesReason(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimSalesTerritory(
+CREATE TABLE ${schema}DimSalesTerritory(
 	SalesTerritoryKey INTEGER IDENTITY(1,1) NOT NULL,
 	SalesTerritoryAlternateKey INTEGER NULL,
 	SalesTerritoryRegion VARCHAR(50) NOT NULL,
@@ -321,14 +321,14 @@ CREATE TABLE AdventureWorks.DimSalesTerritory(
 )
 ;
 
-CREATE TABLE AdventureWorks.DimScenario(
+CREATE TABLE ${schema}DimScenario(
 	ScenarioKey INTEGER IDENTITY(1,1) NOT NULL,
 	ScenarioName VARCHAR(50) NULL,
     CONSTRAINT PK PRIMARY KEY (ScenarioKey)
 )
 ;
 
-CREATE TABLE AdventureWorks.FactAdditionalInternationalProductDescription(
+CREATE TABLE ${schema}FactAdditionalInternationalProductDescription(
 	ProductKey INTEGER NOT NULL,
 	CultureName VARCHAR(50) NOT NULL,
 	ProductDescription VARCHAR(32000) NOT NULL,
@@ -336,7 +336,7 @@ CREATE TABLE AdventureWorks.FactAdditionalInternationalProductDescription(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactCallCenter(
+CREATE TABLE ${schema}FactCallCenter(
 	FactCallCenterID INTEGER IDENTITY(1,1) NOT NULL,
 	DateKey INTEGER NOT NULL,
 	WageType VARCHAR(15) NOT NULL,
@@ -356,7 +356,7 @@ CREATE TABLE AdventureWorks.FactCallCenter(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactCurrencyRate(
+CREATE TABLE ${schema}FactCurrencyRate(
 	CurrencyKey INTEGER NOT NULL,
 	DateKey INTEGER NOT NULL,
 	AverageRate FLOAT NOT NULL,
@@ -366,7 +366,7 @@ CREATE TABLE AdventureWorks.FactCurrencyRate(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactFinance(
+CREATE TABLE ${schema}FactFinance(
 	FinanceKey INTEGER IDENTITY(1,1) NOT NULL,
 	DateKey INTEGER NOT NULL,
 	OrganizationKey INTEGER NOT NULL,
@@ -378,7 +378,7 @@ CREATE TABLE AdventureWorks.FactFinance(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactInternetSales(
+CREATE TABLE ${schema}FactInternetSales(
 	ProductKey INTEGER NOT NULL,
 	OrderDateKey INTEGER NOT NULL,
 	DueDateKey INTEGER NOT NULL,
@@ -409,7 +409,7 @@ CREATE TABLE AdventureWorks.FactInternetSales(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactInternetSalesReason(
+CREATE TABLE ${schema}FactInternetSalesReason(
 	SalesOrderNumber VARCHAR(20) NOT NULL,
 	SalesOrderLineNumber TINYINT NOT NULL,
 	SalesReasonKey INTEGER NOT NULL,
@@ -417,7 +417,7 @@ CREATE TABLE AdventureWorks.FactInternetSalesReason(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactProductInventory(
+CREATE TABLE ${schema}FactProductInventory(
 	ProductKey INTEGER NOT NULL,
 	DateKey INTEGER NOT NULL,
 	MovementDate DATE NOT NULL,
@@ -429,7 +429,7 @@ CREATE TABLE AdventureWorks.FactProductInventory(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactResellerSales(
+CREATE TABLE ${schema}FactResellerSales(
 	ProductKey INTEGER NOT NULL,
 	OrderDateKey INTEGER NOT NULL,
 	DueDateKey INTEGER NOT NULL,
@@ -461,7 +461,7 @@ CREATE TABLE AdventureWorks.FactResellerSales(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactSalesQuota(
+CREATE TABLE ${schema}FactSalesQuota(
 	SalesQuotaKey INTEGER IDENTITY(1,1) NOT NULL,
 	EmployeeKey INTEGER NOT NULL,
 	DateKey INTEGER NOT NULL,
@@ -473,7 +473,7 @@ CREATE TABLE AdventureWorks.FactSalesQuota(
 )
 ;
 
-CREATE TABLE AdventureWorks.FactSurveyResponse(
+CREATE TABLE ${schema}FactSurveyResponse(
 	SurveyResponseKey INTEGER IDENTITY(1,1) NOT NULL,
 	DateKey INTEGER NOT NULL,
 	CustomerKey INTEGER NOT NULL,
@@ -486,7 +486,7 @@ CREATE TABLE AdventureWorks.FactSurveyResponse(
 )
 ;
 
-CREATE TABLE AdventureWorks.NewFactCurrencyRate(
+CREATE TABLE ${schema}NewFactCurrencyRate(
 	AverageRate REAL NULL,
 	CurrencyID VARCHAR(3) NULL,
 	CurrencyDate DATE NULL,
@@ -496,7 +496,7 @@ CREATE TABLE AdventureWorks.NewFactCurrencyRate(
 )
 ;
 
-CREATE TABLE AdventureWorks.ProspectiveBuyer(
+CREATE TABLE ${schema}ProspectiveBuyer(
 	ProspectiveBuyerKey INTEGER IDENTITY(1,1) NOT NULL,
 	ProspectAlternateKey VARCHAR(15) NULL,
 	FirstName VARCHAR(50) NULL,
@@ -530,218 +530,218 @@ CREATE TABLE AdventureWorks.ProspectiveBuyer(
 -- foreign keys
 
 
-ALTER TABLE AdventureWorks.DimAccount ADD 
+ALTER TABLE ${schema}DimAccount ADD 
     CONSTRAINT FK_DimAccount_DimAccount FOREIGN KEY 
     (
         ParentAccountKey
-    ) REFERENCES AdventureWorks.DimAccount (AccountKey) NOCHECK
+    ) REFERENCES ${schema}DimAccount (AccountKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.DimCustomer ADD
+ALTER TABLE ${schema}DimCustomer ADD
 	CONSTRAINT FK_DimCustomer_DimGeography FOREIGN KEY
 	(
 		GeographyKey
 	)
-	REFERENCES AdventureWorks.DimGeography (GeographyKey) NOCHECK
+	REFERENCES ${schema}DimGeography (GeographyKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.DimDepartmentGroup ADD 
+ALTER TABLE ${schema}DimDepartmentGroup ADD 
     CONSTRAINT FK_DimDepartmentGroup_DimDepartmentGroup FOREIGN KEY 
     (
         ParentDepartmentGroupKey
-    ) REFERENCES AdventureWorks.DimDepartmentGroup (DepartmentGroupKey) NOCHECK
+    ) REFERENCES ${schema}DimDepartmentGroup (DepartmentGroupKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.DimEmployee ADD 
+ALTER TABLE ${schema}DimEmployee ADD 
     CONSTRAINT FK_DimEmployee_DimSalesTerritory FOREIGN KEY 
     (
         SalesTerritoryKey
-    ) REFERENCES AdventureWorks.DimSalesTerritory (SalesTerritoryKey) NOCHECK,
+    ) REFERENCES ${schema}DimSalesTerritory (SalesTerritoryKey) NOCHECK,
 	CONSTRAINT FK_DimEmployee_DimEmployee FOREIGN KEY 
     (
         ParentEmployeeKey
-    ) REFERENCES AdventureWorks.DimEmployee (EmployeeKey) NOCHECK
+    ) REFERENCES ${schema}DimEmployee (EmployeeKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.DimGeography ADD
+ALTER TABLE ${schema}DimGeography ADD
     CONSTRAINT FK_DimGeography_DimSalesTerritory  FOREIGN KEY 
     (
         SalesTerritoryKey
-    ) REFERENCES AdventureWorks.DimSalesTerritory (SalesTerritoryKey) NOCHECK
+    ) REFERENCES ${schema}DimSalesTerritory (SalesTerritoryKey) NOCHECK
 ;    
 
-ALTER TABLE AdventureWorks.DimOrganization ADD 
+ALTER TABLE ${schema}DimOrganization ADD 
     CONSTRAINT FK_DimOrganization_DimCurrency FOREIGN KEY 
     (
         CurrencyKey
-    ) REFERENCES AdventureWorks.DimCurrency (CurrencyKey) NOCHECK,
+    ) REFERENCES ${schema}DimCurrency (CurrencyKey) NOCHECK,
     CONSTRAINT FK_DimOrganization_DimOrganization FOREIGN KEY 
     (
         ParentOrganizationKey
-    ) REFERENCES AdventureWorks.DimOrganization (OrganizationKey) NOCHECK
+    ) REFERENCES ${schema}DimOrganization (OrganizationKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.DimProduct ADD 
+ALTER TABLE ${schema}DimProduct ADD 
     CONSTRAINT FK_DimProduct_DimProductSubcategory FOREIGN KEY 
     (
         ProductSubcategoryKey
-    ) REFERENCES AdventureWorks.DimProductSubcategory (ProductSubcategoryKey) NOCHECK
+    ) REFERENCES ${schema}DimProductSubcategory (ProductSubcategoryKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.DimProductSubcategory ADD 
+ALTER TABLE ${schema}DimProductSubcategory ADD 
     CONSTRAINT FK_DimProductSubcategory_DimProductCategory FOREIGN KEY 
     (
         ProductCategoryKey
-    ) REFERENCES AdventureWorks.DimProductCategory (ProductCategoryKey) NOCHECK
+    ) REFERENCES ${schema}DimProductCategory (ProductCategoryKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.DimReseller ADD
+ALTER TABLE ${schema}DimReseller ADD
 	CONSTRAINT FK_DimReseller_DimGeography FOREIGN KEY
 	(
 		GeographyKey
-	) REFERENCES AdventureWorks.DimGeography (GeographyKey) NOCHECK
+	) REFERENCES ${schema}DimGeography (GeographyKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.FactCallCenter ADD 
+ALTER TABLE ${schema}FactCallCenter ADD 
     CONSTRAINT FK_FactCallCenter_DimDate FOREIGN KEY 
     (
         DateKey
-    ) REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK
+    ) REFERENCES ${schema}DimDate (DateKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.FactCurrencyRate ADD 
+ALTER TABLE ${schema}FactCurrencyRate ADD 
     CONSTRAINT FK_FactCurrencyRate_DimDate FOREIGN KEY 
     (
        DateKey
-    ) REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+    ) REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	CONSTRAINT FK_FactCurrencyRate_DimCurrency FOREIGN KEY 
     (
        CurrencyKey
-    ) REFERENCES AdventureWorks.DimCurrency (CurrencyKey) NOCHECK
+    ) REFERENCES ${schema}DimCurrency (CurrencyKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.FactFinance ADD 
+ALTER TABLE ${schema}FactFinance ADD 
     CONSTRAINT FK_FactFinance_DimScenario FOREIGN KEY 
     (
         ScenarioKey
-    ) REFERENCES AdventureWorks.DimScenario (ScenarioKey) NOCHECK,
+    ) REFERENCES ${schema}DimScenario (ScenarioKey) NOCHECK,
     CONSTRAINT FK_FactFinance_DimOrganization FOREIGN KEY 
     (
         OrganizationKey
-    ) REFERENCES AdventureWorks.DimOrganization (OrganizationKey) NOCHECK,
+    ) REFERENCES ${schema}DimOrganization (OrganizationKey) NOCHECK,
     CONSTRAINT FK_FactFinance_DimDepartmentGroup FOREIGN KEY 
     (
         DepartmentGroupKey
-    ) REFERENCES AdventureWorks.DimDepartmentGroup (DepartmentGroupKey) NOCHECK,
+    ) REFERENCES ${schema}DimDepartmentGroup (DepartmentGroupKey) NOCHECK,
 	CONSTRAINT FK_FactFinance_DimDate FOREIGN KEY 
     (
         DateKey
-    ) REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+    ) REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	CONSTRAINT FK_FactFinance_DimAccount FOREIGN KEY 
     (
         AccountKey
-    ) REFERENCES AdventureWorks.DimAccount (AccountKey) NOCHECK	
+    ) REFERENCES ${schema}DimAccount (AccountKey) NOCHECK	
 ;
 
-ALTER TABLE AdventureWorks.FactInternetSales ADD 
+ALTER TABLE ${schema}FactInternetSales ADD 
     CONSTRAINT FK_FactInternetSales_DimCurrency FOREIGN KEY 
     (
         CurrencyKey
-    ) REFERENCES AdventureWorks.DimCurrency (CurrencyKey) NOCHECK,
+    ) REFERENCES ${schema}DimCurrency (CurrencyKey) NOCHECK,
 	 CONSTRAINT FK_FactInternetSales_DimCustomer FOREIGN KEY 
     (
         CustomerKey
-    ) REFERENCES AdventureWorks.DimCustomer (CustomerKey) NOCHECK,
+    ) REFERENCES ${schema}DimCustomer (CustomerKey) NOCHECK,
 	 CONSTRAINT FK_FactInternetSales_DimDate FOREIGN KEY 
     (
         OrderDateKey
-    ) REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+    ) REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	 CONSTRAINT FK_FactInternetSales_DimDate1 FOREIGN KEY 
     (
         DueDateKey
-    ) REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+    ) REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	 CONSTRAINT FK_FactInternetSales_DimDate2 FOREIGN KEY 
     (
         ShipDateKey
-    ) REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+    ) REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	 CONSTRAINT FK_FactInternetSales_DimProduct FOREIGN KEY 
     (
         ProductKey
-    ) REFERENCES AdventureWorks.DimProduct (ProductKey) NOCHECK,
+    ) REFERENCES ${schema}DimProduct (ProductKey) NOCHECK,
 	CONSTRAINT FK_FactInternetSales_DimPromotion FOREIGN KEY 
     (
         PromotionKey
-    ) REFERENCES AdventureWorks.DimPromotion (PromotionKey) NOCHECK,
+    ) REFERENCES ${schema}DimPromotion (PromotionKey) NOCHECK,
 	CONSTRAINT FK_FactInternetSales_DimSalesTerritory FOREIGN KEY 
     (
         SalesTerritoryKey
-    ) REFERENCES AdventureWorks.DimSalesTerritory (SalesTerritoryKey) NOCHECK
+    ) REFERENCES ${schema}DimSalesTerritory (SalesTerritoryKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.FactInternetSalesReason ADD 
+ALTER TABLE ${schema}FactInternetSalesReason ADD 
     CONSTRAINT FK_FactInternetSalesReason_FactInternetSales FOREIGN KEY 
     (
         SalesOrderNumber, SalesOrderLineNumber
-    ) REFERENCES AdventureWorks.FactInternetSales (SalesOrderNumber, SalesOrderLineNumber),
+    ) REFERENCES ${schema}FactInternetSales (SalesOrderNumber, SalesOrderLineNumber),
 	CONSTRAINT FK_FactInternetSalesReason_DimSalesReason FOREIGN KEY
 	(
 		SalesReasonKey
-	) REFERENCES AdventureWorks.DimSalesReason (SalesReasonKey) NOCHECK
+	) REFERENCES ${schema}DimSalesReason (SalesReasonKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.FactProductInventory ADD 
+ALTER TABLE ${schema}FactProductInventory ADD 
     CONSTRAINT FK_FactProductInventory_DimDate FOREIGN KEY 
     (
         DateKey
-    ) REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+    ) REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	CONSTRAINT FK_FactProductInventory_DimProduct FOREIGN KEY
 	(
 		ProductKey
-	) REFERENCES AdventureWorks.DimProduct (ProductKey) NOCHECK
+	) REFERENCES ${schema}DimProduct (ProductKey) NOCHECK
 ;
 
 
 
-ALTER TABLE AdventureWorks.FactResellerSales ADD 
+ALTER TABLE ${schema}FactResellerSales ADD 
     CONSTRAINT FK_FactResellerSales_DimCurrency FOREIGN KEY(CurrencyKey)
-			REFERENCES AdventureWorks.DimCurrency (CurrencyKey) NOCHECK,
+			REFERENCES ${schema}DimCurrency (CurrencyKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimDate FOREIGN KEY(OrderDateKey)
-			REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+			REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimDate1 FOREIGN KEY(DueDateKey)
-			REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+			REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimDate2 FOREIGN KEY(ShipDateKey)
-			REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+			REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimEmployee FOREIGN KEY(EmployeeKey)
-			REFERENCES AdventureWorks.DimEmployee (EmployeeKey) NOCHECK,
+			REFERENCES ${schema}DimEmployee (EmployeeKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimProduct FOREIGN KEY(ProductKey)
-			REFERENCES AdventureWorks.DimProduct (ProductKey) NOCHECK,
+			REFERENCES ${schema}DimProduct (ProductKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimPromotion FOREIGN KEY(PromotionKey)
-			REFERENCES AdventureWorks.DimPromotion (PromotionKey) NOCHECK,
+			REFERENCES ${schema}DimPromotion (PromotionKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimReseller FOREIGN KEY(ResellerKey)
-			REFERENCES AdventureWorks.DimReseller (ResellerKey) NOCHECK,
+			REFERENCES ${schema}DimReseller (ResellerKey) NOCHECK,
 	CONSTRAINT FK_FactResellerSales_DimSalesTerritory FOREIGN KEY(SalesTerritoryKey)
-			REFERENCES AdventureWorks.DimSalesTerritory (SalesTerritoryKey) NOCHECK
+			REFERENCES ${schema}DimSalesTerritory (SalesTerritoryKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.FactSalesQuota ADD 
+ALTER TABLE ${schema}FactSalesQuota ADD 
     CONSTRAINT FK_FactSalesQuota_DimEmployee FOREIGN KEY(EmployeeKey)
-			REFERENCES AdventureWorks.DimEmployee (EmployeeKey) NOCHECK,
+			REFERENCES ${schema}DimEmployee (EmployeeKey) NOCHECK,
     CONSTRAINT FK_FactSalesQuota_DimDate FOREIGN KEY(DateKey)
-			REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK
+			REFERENCES ${schema}DimDate (DateKey) NOCHECK
 ;
 
-ALTER TABLE AdventureWorks.FactSurveyResponse  ADD 
+ALTER TABLE ${schema}FactSurveyResponse  ADD 
     CONSTRAINT FK_FactSurveyResponse_DateKey FOREIGN KEY(DateKey)
-			REFERENCES AdventureWorks.DimDate (DateKey) NOCHECK,
+			REFERENCES ${schema}DimDate (DateKey) NOCHECK,
 	CONSTRAINT FK_FactSurveyResponse_CustomerKey FOREIGN KEY(CustomerKey)
-			REFERENCES AdventureWorks.DimCustomer (CustomerKey) NOCHECK
+			REFERENCES ${schema}DimCustomer (CustomerKey) NOCHECK
 ;
 
 
 
 --- views
 
-CREATE VIEW AdventureWorks.vDMPrep
+CREATE VIEW ${schema}vDMPrep
 AS
     SELECT
         pc.EnglishProductCategoryName
@@ -769,24 +769,24 @@ AS
         ,f.OrderQuantity AS Quantity
         ,f.ExtendedAmount AS Amount  
     FROM
-        AdventureWorks.FactInternetSales f
-    INNER JOIN AdventureWorks.DimDate d
+        ${schema}FactInternetSales f
+    INNER JOIN ${schema}DimDate d
         ON f.OrderDateKey = d.DateKey
-    INNER JOIN AdventureWorks.DimProduct p
+    INNER JOIN ${schema}DimProduct p
         ON f.ProductKey = p.ProductKey
-    INNER JOIN AdventureWorks.DimProductSubcategory psc
+    INNER JOIN ${schema}DimProductSubcategory psc
         ON p.ProductSubcategoryKey = psc.ProductSubcategoryKey
-    INNER JOIN AdventureWorks.DimProductCategory pc
+    INNER JOIN ${schema}DimProductCategory pc
         ON psc.ProductCategoryKey = pc.ProductCategoryKey
-    INNER JOIN AdventureWorks.DimCustomer c
+    INNER JOIN ${schema}DimCustomer c
         ON f.CustomerKey = c.CustomerKey
-    INNER JOIN AdventureWorks.DimGeography g
+    INNER JOIN ${schema}DimGeography g
         ON c.GeographyKey = g.GeographyKey
-    INNER JOIN AdventureWorks.DimSalesTerritory s
+    INNER JOIN ${schema}DimSalesTerritory s
         ON g.SalesTerritoryKey = s.SalesTerritoryKey 
 ;
 
-CREATE VIEW AdventureWorks.vTargetMail 
+CREATE VIEW ${schema}vTargetMail 
 AS
     SELECT
         c.CustomerKey, 
@@ -825,7 +825,7 @@ AS
             ELSE 1 
         END AS BikeBuyer
     FROM
-        AdventureWorks.DimCustomer c INNER JOIN (
+        ${schema}DimCustomer c INNER JOIN (
             SELECT
                 CustomerKey
                 ,Region
@@ -836,7 +836,7 @@ AS
                         ELSE 0 
                     END) AS Bikes
             FROM
-                AdventureWorks.vDMPrep 
+                ${schema}vDMPrep 
             GROUP BY
                 CustomerKey
                 ,Region
@@ -853,7 +853,7 @@ AS
 --      - Abbreviates model names to improve readability in mining model viewer
 --      - Concatenates model and region so that table only has one input.
 --      - Creates a date field indexed to monthly reporting date for use in prediction.
-CREATE VIEW AdventureWorks.vTimeSeries 
+CREATE VIEW ${schema}vTimeSeries 
 AS
     SELECT 
         CASE Model 
@@ -868,10 +868,10 @@ AS
         ,Sum(Amount) AS Amount
 		,CalendarYear
 		,Month
-		,AdventureWorks.udfBuildISO8601Date (CalendarYear, Month, 25)
+		,${schema}udfBuildISO8601Date (CalendarYear, Month, 25)
 		as ReportingDate
     FROM 
-        AdventureWorks.vDMPrep 
+        ${schema}vDMPrep 
     WHERE 
         Model IN ('Mountain-100', 'Mountain-200', 'Road-150', 'Road-250', 
             'Road-650', 'Road-750', 'Touring-1000') 
@@ -886,7 +886,7 @@ AS
         ,(Convert(Integer, CalendarYear) * 100) + Convert(Integer, Month)
 		,CalendarYear
 		,Month
-		,AdventureWorks.udfBuildISO8601Date (CalendarYear, Month, 25)
+		,${schema}udfBuildISO8601Date (CalendarYear, Month, 25)
 ;
 
 */

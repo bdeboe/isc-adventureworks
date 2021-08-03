@@ -1,93 +1,95 @@
-DROP VIEW AdventureWorks.vTargetMail
+DROP VIEW ${schema}vTargetMail
 ;
 
-DROP VIEW AdventureWorks.vDMPrep
+DROP VIEW ${schema}vDMPrep
 ;
 
-DROP TABLE AdventureWorks.FactSurveyResponse
+DROP TABLE ${schema}FactSurveyResponse
 ;
 
-DROP TABLE AdventureWorks.FactSalesQuota
+DROP TABLE ${schema}FactSalesQuota
 ;
 
-DROP TABLE AdventureWorks.FactResellerSales
+DROP TABLE ${schema}FactResellerSales
 ;
 
-DROP TABLE AdventureWorks.FactAdditionalInternationalProductDescription
+DROP TABLE ${schema}FactAdditionalInternationalProductDescription
 ;
 
-DROP TABLE AdventureWorks.FactCallCenter
+DROP TABLE ${schema}FactCallCenter
 ;
 
-DROP TABLE AdventureWorks.FactCurrencyRate
+DROP TABLE ${schema}FactCurrencyRate
 ;
 
-DROP TABLE AdventureWorks.FactFinance
+DROP TABLE ${schema}FactFinance
 ;
 
-DROP TABLE AdventureWorks.FactInternetSalesReason
+DROP TABLE ${schema}FactInternetSalesReason
 ;
 
-DROP TABLE AdventureWorks.FactInternetSales
+DROP TABLE ${schema}FactInternetSales
 ;
 
-DROP TABLE AdventureWorks.FactProductInventory
+DROP TABLE ${schema}FactProductInventory
 ;
 
 
-DROP TABLE AdventureWorks.NewFactCurrencyRate
+DROP TABLE ${schema}NewFactCurrencyRate
 ;
 
-DROP TABLE AdventureWorks.ProspectiveBuyer
+DROP TABLE ${schema}ProspectiveBuyer
 ;
 
-DROP TABLE AdventureWorks.DimAccount
+DROP TABLE ${schema}DimAccount
 ;
 
-DROP TABLE AdventureWorks.DimCustomer
+DROP TABLE ${schema}DimCustomer
 ;
 
-DROP TABLE AdventureWorks.DimDate
+DROP TABLE ${schema}DimDate
 ;
 
-DROP TABLE AdventureWorks.DimDepartmentGroup
+DROP TABLE ${schema}DimDepartmentGroup
 ;
 
-DROP TABLE AdventureWorks.DimEmployee
+DROP TABLE ${schema}DimEmployee
 ;
 
-DROP TABLE AdventureWorks.DimOrganization
+DROP TABLE ${schema}DimOrganization
 ;
 
-DROP TABLE AdventureWorks.DimProduct
+DROP TABLE ${schema}DimProduct
 ;
 
-DROP TABLE AdventureWorks.DimProductSubCategory
+DROP TABLE ${schema}DimProductSubCategory
 ;
 
-DROP TABLE AdventureWorks.DimProductCategory
+DROP TABLE ${schema}DimProductCategory
 ;
 
-DROP TABLE AdventureWorks.DimPromotion
+DROP TABLE ${schema}DimPromotion
 ;
 
-DROP TABLE AdventureWorks.DimReseller
+DROP TABLE ${schema}DimReseller
 ;
 
-DROP TABLE AdventureWorks.DimSalesReason
+DROP TABLE ${schema}DimSalesReason
 ;
 
-DROP TABLE AdventureWorks.DimScenario
+DROP TABLE ${schema}DimScenario
 ;
 
-DROP TABLE AdventureWorks.DimGeography
+DROP TABLE ${schema}DimGeography
 ;
 
-DROP TABLE AdventureWorks.DimSalesTerritory
+DROP TABLE ${schema}DimSalesTerritory
 ;
 
-DROP TABLE AdventureWorks.DimCurrency
+DROP TABLE ${schema}DimCurrency
 ;
+
+-- purge SQL Loader logs
 
 DELETE FROM %SQL_Diag.Message
 ;

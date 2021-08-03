@@ -1,7 +1,7 @@
 Class AdventureWorks.Utils
 {
 
-ClassMethod Setup(repoRoot As %String = "", verbose As %Boolean = 1) As %Status
+ClassMethod Setup(repoRoot As %String = "", schema As %String = "AdventureWorks", verbose As %Boolean = 1) As %Status
 {
 	set sc = $$$OK
 	try {
@@ -11,9 +11,10 @@ ClassMethod Setup(repoRoot As %String = "", verbose As %Boolean = 1) As %Status
 		set sc = ..Download(repoRoot_"data", verbose)
 		quit:$$$ISERR(sc)
 
-		do ..RunDDL(repoRoot_"src"_separator_"sql"_separator_"uninstall-dw.sql",, 1, 0)
+		set variables("schema") = $s(schema="":"", 1:schema_".")
+		do ..RunDDL(repoRoot_"src"_separator_"sql"_separator_"uninstall-dw.sql", .variables, 1, 0)
 
-		set sc = ..RunDDL(repoRoot_"src"_separator_"sql"_separator_"install-dw.sql",,, verbose)
+		set sc = ..RunDDL(repoRoot_"src"_separator_"sql"_separator_"install-dw.sql", .variables,, verbose)
 		quit:$$$ISERR(sc)
 
 		// TODO: move into .sql file

@@ -1,25 +1,25 @@
 LOAD DATA FROM FILE '${data_dir}DimAccount.csv'
-	INTO AdventureWorks.DimAccount
+	INTO ${schema}DimAccount
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimCurrency.csv'
-	INTO AdventureWorks.DimCurrency
+	INTO ${schema}DimCurrency
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimCustomer.csv'
-	INTO AdventureWorks.DimCustomer
+	INTO ${schema}DimCustomer
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimDate.csv'
-	INTO AdventureWorks.DimDate
+	INTO ${schema}DimDate
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimDepartmentGroup.csv'
-	INTO AdventureWorks.DimDepartmentGroup
+	INTO ${schema}DimDepartmentGroup
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
@@ -56,7 +56,7 @@ LOAD DATA FROM FILE '${data_dir}DimEmployee.csv'
 		EndDate DATE, 
 		Status VARCHAR(50)
 	)
-	INTO AdventureWorks.DimEmployee (
+	INTO ${schema}DimEmployee (
 		EmployeeKey, ParentEmployeeKey, EmployeeNationalIDAlternateKey, ParentEmployeeNationalIDAlternateKey,  
 		SalesTerritoryKey, FirstName, LastName, MiddleName, NameStyle, Title, HireDate, BirthDate,  
 		LoginID, EmailAddress, Phone, MaritalStatus, EmergencyContactName, EmergencyContactPhone, SalariedFlag, Gender,  
@@ -74,12 +74,12 @@ LOAD DATA FROM FILE '${data_dir}DimEmployee.csv'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimGeography.csv'
-	INTO AdventureWorks.DimGeography
+	INTO ${schema}DimGeography
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimOrganization.csv'
-	INTO AdventureWorks.DimOrganization
+	INTO ${schema}DimOrganization
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
@@ -95,7 +95,7 @@ LOAD DATA FROM FILE '${data_dir}DimProduct.csv'
 		HebrewDescription VARCHAR(400), ThaiDescription VARCHAR(400), GermanDescription VARCHAR(400), JapaneseDescription VARCHAR(400),
 		TurkishDescription VARCHAR(400), StartDate DATETIME, EndDate DATETIME, Status VARCHAR(7)
 	)
-	INTO AdventureWorks.DimProduct (
+	INTO ${schema}DimProduct (
 		ProductKey, ProductAlternateKey, ProductSubcategoryKey, WeightUnitMeasureCode,
 		SizeUnitMeasureCode, EnglishProductName, SpanishProductName, FrenchProductName,
 		StandardCost, FinishedGoodsFlag, Color, SafetyStockLevel, ReorderPoint,
@@ -121,97 +121,97 @@ LOAD DATA FROM FILE '${data_dir}DimProduct.csv'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimProductCategory.csv'
-	INTO AdventureWorks.DimProductCategory
+	INTO ${schema}DimProductCategory
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimProductSubCategory.csv'
-	INTO AdventureWorks.DimProductSubCategory
+	INTO ${schema}DimProductSubCategory
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimPromotion.csv'
-	INTO AdventureWorks.DimPromotion
+	INTO ${schema}DimPromotion
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimReseller.csv'
-	INTO AdventureWorks.DimReseller
+	INTO ${schema}DimReseller
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimSalesReason.csv'
-	INTO AdventureWorks.DimSalesReason
+	INTO ${schema}DimSalesReason
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimSalesTerritory.csv'
-	INTO AdventureWorks.DimSalesTerritory
+	INTO ${schema}DimSalesTerritory
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}DimScenario.csv'
-	INTO AdventureWorks.DimScenario
+	INTO ${schema}DimScenario
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactAdditionalInternationalProductDescription.csv'
-	INTO AdventureWorks.FactAdditionalInternationalProductDescription
+	INTO ${schema}FactAdditionalInternationalProductDescription
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactCallCenter.csv'
-	INTO AdventureWorks.FactCallCenter
+	INTO ${schema}FactCallCenter
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactCurrencyRate.csv'
-	INTO AdventureWorks.FactCurrencyRate
+	INTO ${schema}FactCurrencyRate
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactFinance.csv'
-	INTO AdventureWorks.FactFinance
+	INTO ${schema}FactFinance
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactInternetSales.csv'
-	INTO AdventureWorks.FactInternetSales
+	INTO ${schema}FactInternetSales
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactInternetSalesReason.csv'
-	INTO AdventureWorks.FactInternetSalesReason
+	INTO ${schema}FactInternetSalesReason
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactProductInventory.csv'
-	INTO AdventureWorks.FactProductInventory
+	INTO ${schema}FactProductInventory
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactResellerSales.csv'
-	INTO AdventureWorks.FactResellerSales
+	INTO ${schema}FactResellerSales
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactSalesQuota.csv'
-	INTO AdventureWorks.FactSalesQuota
+	INTO ${schema}FactSalesQuota
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}FactSurveyResponse.csv'
-	INTO AdventureWorks.FactSurveyResponse
+	INTO ${schema}FactSurveyResponse
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}NewFactCurrencyRate.csv'
-	INTO AdventureWorks.NewFactCurrencyRate
+	INTO ${schema}NewFactCurrencyRate
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
 LOAD DATA FROM FILE '${data_dir}ProspectiveBuyer.csv'
-	INTO AdventureWorks.ProspectiveBuyer
+	INTO ${schema}ProspectiveBuyer
 	USING '{ "from": {"file": {"columnseparator":"|"} } }'
 ;
 
