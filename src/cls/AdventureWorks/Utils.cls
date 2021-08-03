@@ -130,7 +130,7 @@ ClassMethod RunDDL(file As %String, ByRef replace As %String, ignoreErrors As %B
 					set sql = $replace(sql,"${"_str_"}",rep)
 				}
 
-				set sql = $zstrip(sql,"<>WC")
+				set sql = $zstrip(sql,"<>WC"), ts = $zh
 
 				write:verbose !!,"  Executing statement:",!,sql
 				set rs = ##class(%SQL.Statement).%ExecDirect(,sql)
@@ -142,7 +142,7 @@ ClassMethod RunDDL(file As %String, ByRef replace As %String, ignoreErrors As %B
 						quit
 					}
 				} else {
-					write:verbose !,"    SUCCESS"
+					write:verbose !,"    SUCCESS (",$normalize($zh-ts,3),"s)"
 					write:verbose&&rs.%ROWCOUNT " - ",rs.%ROWCOUNT," rows affected"
 				}
 			} else {
