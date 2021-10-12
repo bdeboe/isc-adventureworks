@@ -2,6 +2,11 @@
 
 
 
+
+
+
+
+
 -- simple grouped aggregates, but how to compare rows?
 SELECT EmployeeKey,
     SUM(salesamount) TotalSales,
@@ -11,6 +16,8 @@ FROM AdventureWorks.factresellersales f
 GROUP BY f.EmployeeKey
 ORDER BY 2 DESC
 ;
+
+
 
 
 
@@ -86,6 +93,7 @@ ORDER BY EmployeeKey,
     FiscalYear;
 
 
+
 -- create table for loading CSV data
 CREATE TABLE AdventureWorks.Volatility
 (
@@ -93,6 +101,10 @@ CREATE TABLE AdventureWorks.Volatility
     Volatility DOUBLE,
     CONSTRAINT pk UNIQUE Currency
 );
+
+
+
+
 
 
 
@@ -114,8 +126,17 @@ SELECT * FROM AdventureWorks.Volatility;
 
 
 
--- create a UDAF based on a simple ITERATE function
--- INITIALIZE, MERGE and FINALIZE are optional
+
+
+
+
+
+
+
+
+
+
+-- create a simple UDF to iterate over rows and accumulate the magic number
 CREATE FUNCTION AdventureWorks.MagicIter(Temp DOUBLE, Amount DOUBLE, Volatility DOUBLE)
     RETURNS DOUBLE
     LANGUAGE ObjectScript
@@ -123,6 +144,10 @@ CREATE FUNCTION AdventureWorks.MagicIter(Temp DOUBLE, Amount DOUBLE, Volatility 
         quit $g(Temp) + $s($g(Amount)>1000:Amount, 1:$g(Amount)*$g(Volatility))
     }
 ;
+
+
+-- create a UDAF based on a simple ITERATE function
+-- INITIALIZE, MERGE and FINALIZE are optional
 CREATE OR REPLACE AGGREGATE AdventureWorks.Magic(Amount DOUBLE, Volatility DOUBLE)
     RETURNS DOUBLE
     ITERATE WITH AdventureWorks.MagicIter
@@ -132,7 +157,7 @@ CREATE OR REPLACE AGGREGATE AdventureWorks.Magic(Amount DOUBLE, Volatility DOUBL
 SELECT  Currency,
         AdventureWorks.Magic(salesamount, Volatility) AS AdjustedSales,
         SUM(salesamount) AS TotalSales, 
-        AVG(Volatility) AS AvgVolatility
+        Volatility
 FROM AdventureWorks.FactResellerSales f
     JOIN AdventureWorks.DimCurrency c ON f.CurrencyKey = c.CurrencyKey
     JOIN AdventureWorks.Volatility v ON c.CurrencyAlternateKey = v.Currency
@@ -140,7 +165,7 @@ GROUP BY Currency
 ;
 
 
--- the full sandwich
+-- and now materialize results into a table
 CREATE TABLE AdventureWorks.TheFullSandwich AS
     SELECT EmployeeKey,
         FiscalYear,
@@ -167,7 +192,3 @@ CREATE TABLE AdventureWorks.TheFullSandwich AS
         )
 ;
 
-
--- and now materialize results into a table
-CREATE TABLE AdventureWorks.SalesLeaderboard AS
-...
